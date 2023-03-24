@@ -24,3 +24,31 @@ def find(sub_string):
        if sub_string in line:
            result.append(line)
    return (result)
+
+def rewrite_line(initinal_line, new_line):
+    data = read_phonebook()
+    result = []
+    for line in data:
+        if line == initinal_line:
+            result.append(new_line)
+        else:
+            result.append(line)
+    with open('file.txt', 'w', encoding='utf-8') as file:
+        for line in result:
+            for item in line:
+                file.write(item + ' ')
+            file.write('\n')
+        file.close()
+
+def delete_contact(contact_to_delete):
+    data = read_phonebook()
+    result = []
+    for line in data:
+        if line != contact_to_delete:
+            result.append(line)
+    with open('file.txt', 'w', encoding='utf-8') as file:
+        for line in result:
+            for item in line:
+                file.write(item + ' ')
+            file.write('\n')
+        file.close()
